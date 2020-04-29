@@ -13,17 +13,23 @@ listint_t *insert_node(listint_t **head, int number)
 	listint_t *current;
 	listint_t *new;
 
-	/* NULL head check, error */
 	if (!head)
 		return (NULL);
-
-	/* empty list check, insert new node automatically*/
 	if (!(*head))
 		return (add_nodeint_end(head, number));
-
-	/* copy head to be able to move through list */
+	/* if number is -ve */
+	if (number < 0)
+	{
+		/* insert new node into this position */
+		new = malloc(sizeof(listint_t));
+		if (!new)
+			return (NULL);
+		new->n = number;
+		new->next = *head;
+		*head = new;
+		return (new);
+	}
 	current = *head;
-
 	/* search for where n > number */
 	while (current->next)
 	{
@@ -43,6 +49,5 @@ listint_t *insert_node(listint_t **head, int number)
 			return (add_nodeint_end(head, number));
 		current = current->next;
 	}
-	/* workaround for non-void function error */
 	return (NULL);
 }
