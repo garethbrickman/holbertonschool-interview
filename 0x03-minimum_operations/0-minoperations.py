@@ -10,6 +10,9 @@ def minOperations(n):
     count = 0
     inc = 2
 
+    if type(n) is not int or n < 2:
+        return 0
+
     while inc <= n:
         if n % inc == 0:
             count += 1
