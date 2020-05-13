@@ -2,24 +2,27 @@
 """
 Calculates min operations
 """
-
 from sys import setrecursionlimit
 
-setrecursionlimit(10**6)
 
 def minOperations(n):
-    """ Returns an int or 0 if impossible """
+
+    setrecursionlimit(10**6)
 
     count = 0
-    inc = 2
+    inc = 2  # 3 4 5 6 etc.
+
+    # factor = 2
+    # no even division (prime) inc = n
 
     if type(n) is not int or n < 2:
         return 0
 
-    while inc <= n:
+    while n != 1:
         if n % inc == 0:
-            count += 1
+            count += inc  # 1
             n /= inc
-        else:
-            count += 1
+            inc = 1  # resets for next loop
+        inc = inc + 1
+
     return count
