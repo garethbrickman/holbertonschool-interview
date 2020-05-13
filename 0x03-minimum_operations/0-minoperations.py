@@ -3,6 +3,9 @@
 Calculates min operations
 """
 
+from sys import setrecursionlimit
+
+setrecursionlimit(10**6)
 
 def minOperations(n):
     """ Returns an int or 0 if impossible """
