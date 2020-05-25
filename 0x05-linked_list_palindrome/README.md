@@ -1,0 +1,1 @@
+This is a README for my 0x05-linked_list_palindrome project!
