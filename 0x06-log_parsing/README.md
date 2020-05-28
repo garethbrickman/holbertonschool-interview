@@ -1,0 +1,1 @@
+This is a README for my 0x06-log_parsing project!
