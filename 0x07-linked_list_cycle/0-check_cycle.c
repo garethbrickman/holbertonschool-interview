@@ -3,13 +3,13 @@
 #include "lists.h"
 
 /**
- * is_palindrome - checks if singly linked list in palindrome
- * @head: ptr to ptr to head of list
- * Return: 0 if not a palindrome, 1 if a palindrome
+ * check_cycle - hecks if a singly linked list has a cycle in it.
+ * @list: ptr head of list
+ * Return: 0 if no cycle, 1 if cycle
  */
-int is_palindrome(listint_t **head)
+int check_cycle(listint_t *list);
 {
-	if (!*(head))
-		return (1);
-	return (0);
+	if (!*list)
+		return (0);
+	return (1);
 }
