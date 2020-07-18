@@ -1,36 +1,12 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "slide_line.h"
-
-
-void slide_left(int *line, size_t size);
-void slide_right(int *line, size_t size);
-/**
- * slide_line - slides and merges an array of integers
- * @line: ptr array of ints containing size elements
- * @size: size of array
- * @direction: int direction elements must be slid and merged to
- * Return: 1 on success, 0 on failure
- */
-int slide_line(int *line, size_t size, int direction)
-{
-	if (!line || !size)
-		return (0);
-	if (direction == 76)
-		slide_left(line, size);
-	if (direction == 82)
-		slide_right(line, size);
-	else
-		return (0);
-	return (1);
-}
+#include <stdio.h>
 
 /**
- * slide_left - slides line left
- * @line: list of ints
+ * go_left - pushes line left
+ * @line: list of integers
  * @size: size of list
  */
-void slide_left(int *line, size_t size)
+void go_left(int *line, size_t size)
 {
 	size_t i, j;
 
@@ -62,11 +38,11 @@ void slide_left(int *line, size_t size)
 }
 
 /**
- * slide_right - slides line right
- * @line: list of ints
+ * go_right - pushes line right
+ * @line: list of integers
  * @size: size of list
  */
-void slide_right(int *line, size_t size)
+void go_right(int *line, size_t size)
 {
 	size_t i, j;
 
@@ -95,4 +71,24 @@ void slide_right(int *line, size_t size)
 			}
 		}
 	}
+}
+/**
+ * slide_line - slides line to left or right
+ * @line: list of numbers to slide
+ * @size: size of list
+ * @direction: direction to slide
+ *
+ * Return: 1 if successful or 0 if fails
+ */
+int slide_line(int *line, size_t size, int direction)
+{
+	if (!line || !size)
+		return (0);
+	if (direction == 76)
+		go_left(line, size);
+	else if (direction == 82)
+		go_right(line, size);
+	else
+		return (0);
+	return (1);
 }
