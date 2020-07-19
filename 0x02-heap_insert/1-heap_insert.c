@@ -2,6 +2,49 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
+/**
+ * count_nodes - counts the number of nodes inside the tree.
+ * @tree: binary tree node.
+ * Return: number of nodes in the tree.
+ */
+int count_nodes(heap_t *tree)
+{
+	if (!tree)
+		return (0);
+	return (1 + count_nodes(tree->left) + count_nodes(tree->right));
+}
+
+/**
+ * is_complete - function that checks if tree is complete.
+ * @tree: binary tree node.
+ * @index: index of the tree.
+ * @n: number of nodes.
+ * Return: 1 on success 0 on failure.
+ */
+heap_t *is_complete(heap_t *tree, int index, int n)
+{
+	heap_t *left, *right;
+
+	if ((tree->left) && !(tree->right))
+		return (tree);
+	if (!(tree->left) && !(tree->right))
+	{
+		if (index == n)
+			return (NULL);
+		else
+			return (tree);
+	}
+
+	left = is_complete(tree->left, (2 * index) + 1, n);
+	right = is_complete(tree->right, (2 * index) + 2, n);
+
+	if  (left)
+		return (left);
+	else
+		return (right);
+}
+
 /**
  * heapt_t *heap_insert -inserts value into Max Binary Heap
  * @root: double pointer to the root node of the Heap
@@ -10,26 +53,37 @@
  */
 heap_t *heap_insert(heap_t **root, int value)
 {
+	heap_t *new;
+	heap_t *parent;
+	int size;
 
-	binary_tree_t *newnode;
+	new = malloc(sizeof(heap_t));
 
-	if (!root)
+	if (!new)
 		return (NULL);
-	newnode = binary_tree_node(NULL, value);
-	if (!newnode)
-		return (NULL);
+	parent = malloc(sizeof(heap_t));
+	new->parent = NULL;
+	new->left = NULL;
+	new->right = NULL;
+	new->n = value;
 
-	if (!(*root))
+	if (!*root)
 	{
-		(*root) = newnode;
-		return (newnode);
+		*root = new;
+		return (new);
 	}
 
-	if ((*root)->n > value)
+	size = count_nodes(*root);
+	parent = is_complete(*root, 0, size);
+	if (!parent->left)
 	{
-		(*root)->left = newnode;
-		newnode->parent = (*root);
-		return (newnode);
+		parent->left = new;
+		new->parent = parent;
 	}
-	return (NULL);
+	else
+	{
+		parent->right = new;
+		new->parent = parent;
+	}
+	return (new);
 }
