@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """ Solving n queens """
 
+
 import sys
+
 
 # error handling for argv[1]
 
