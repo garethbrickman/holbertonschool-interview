@@ -15,6 +15,6 @@
 avl_t *sorted_array_to_avl(int *array, size_t size)
 {
 	if (!array || !size)
-		return(NULL);
-	return(0);
+		return (NULL);
+	return (0);
 }
