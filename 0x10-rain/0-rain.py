@@ -3,7 +3,7 @@
 
 def rain(walls):
     """ Calculates how much water retained """
-    # [0, 1, 0, 2, 0, 3, 0, 4]
+
     if not walls or len(walls) < 1:
         return 0
 
@@ -16,4 +16,4 @@ def rain(walls):
                 total += 1
             else:
                 total += elem
-    print(total)
+    return total
