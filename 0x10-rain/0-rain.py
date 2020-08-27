@@ -1,10 +1,11 @@
 #!/usr/bin/python3
+""" Module for peak list rainfall problem """
 
 
 def rain(walls):
     """ Calculates how much water retained """
 
-    if not walls or len(walls) < 1:
+    if not walls or len(walls) <= 2:
         return 0
 
     list_len = len(walls)
