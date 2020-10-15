@@ -30,6 +30,7 @@ This repository contains programs for the interview prep curriculum at Holberton
 | [0x14-heap_extract](./0x14-heap_extract)                                 | C - heaps                              |
 | [0x15-infinite_multiplication](./0x15-infinite_multiplication)           | C - math, dynamic memory allocation    |
 | [0x16-rotate_2d_matrix](./0x16-rotate_2d_matrix)                         | Python - matrixes                      |
+| [0x17-find_the_loop](./0x17-find_the_loop)                               | C - linked lists                       |
 
 ## Author
 
