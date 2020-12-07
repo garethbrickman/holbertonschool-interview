@@ -22,6 +22,10 @@ typedef struct binary_tree_s binary_tree_t;
 typedef struct binary_tree_s avl_t;
 
 binary_tree_t *binary_tree_node(binary_tree_t *parent, int value);
+size_t binary_tree_height(const binary_tree_t *tree);
+int binary_tree_is_bst(const binary_tree_t *tree);
+int bst_util(const binary_tree_t *tree, int min, int max);
+
 void binary_tree_print(const binary_tree_t *);
 int binary_tree_is_avl(const binary_tree_t *tree);
 
